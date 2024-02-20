@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>E-Plastic Management System</title>
+	<style>
+		body{
+			background-image:url('{% static "images/bg.jpeg" %}');
+			background-repeat:no-repeat;
+			background-attachment:fixed;
+			background-size:100% 100%;
+		}
+		form{
+			background-color: transparent;
+			padding: 50px;
+			width: 13%;
+		}
+		table{
+			text-align: left;
+			padding: 5px;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		input{
+			padding: 10px;
+		}
+		label{
+			font-size: ;
+		}
+		#btn{
+			background-color: transparent;
+			border: 0px;
+			color:blue;
+			font-size: 30px;
+			font-family: serif;
+		}
+		#History{
+			display: none;
+		}
+		button{
+			align-self:right;
+			background: transparent;
+			font-size: 20px;
+			font-family: serif;
+			border: none;
+		}
+	</style>
+	<script type="text/javascript">
+		function viewData(){
+			document.getElementById('History').style.display="table";
+		}
+	</script>
+</head>
+<body>
+	<center><a href="{% url 'home' %}"><img src="{% static 'images/title_head.jpg' %}"></a></center>
+	<center><img src="{% static 'images/hack.jpeg' %}"></center>
+     
+	<h1><center>E-Plastic Management System</center></h1>
+	<marquee><h2>Recycle It All - No Matter How Small!!!</h2></marquee>
+	<button onclick='viewData()'><h3>View Previous Transactions</h3></button>
+	<center>
+	<form method="POST">
+		{% csrf_token %}
+		<table>
+			<tr>
+				<td><label>*Name:</label></td>
+				<td><input type="text" id="Name" name="Name" value={{data.Name}} required></td>
+			</tr>
+			<tr>
+				<td><label>Material:</label></td>
+				<td><input type="text" id="Material" name="Material"></td>
+			</tr>
+			<tr>
+				<td><label>*Quantity:</label></td>
+				<td><input type="text" name="Quantity" required></td>
+			</tr>
+			<tr>
+				<td><label>*Phone Number:</label></td>
+				<td><input type="number" name="phno" required></td>
+			</tr>
+			<tr>
+				<td><label>*Email:</label></td>
+				<td><input type="email" id="Email" name="Email" value={{data.EMail}} required></td>
+			</tr>
+			<tr>
+				<td><label>*Address:</label></td>
+				<td><input type="text" id="Address" name="Address" value={{data.Address}} required></td>
+			</tr>
+			<tr>
+				<td><label>Expected Value:</label></td>
+				<td><input type="number" id="ExpectedValue" name="ExpectedValue"></td>
+			</tr>
+			<tr>
+				<td><label>Material Type:</label></td>
+				<td><input type="text" id="MaterialType" name="MaterialType"></td>
+			</tr>
+			<tr>
+				<td><label>Image:</td>
+				<td><input type="file" id="File" name="File"></td>
+			</tr>
+		</table>
+		<input type="submit" value="Submit" id="btn">
+	</form>
+	<div id="History">
+		{% if history %}
+		<table style="background-color: rgba(102, 255, 255, 0.5);">
+			<tr style="padding: 10px; ">
+				<td style="padding: 15px; ">Name</td>
+				<td style="padding: 15px; ">Quantity</td>
+				<td style="padding: 15px; ">Value</td>
+				<td style="padding: 15px; ">Status</td>
+			</tr>
+			{% for i in history %}
+			<tr style="padding: 10px; ">
+				<td style="padding: 15px; ">{{i.Name}}</td>
+				<td style="padding: 15px; ">{{i.Quantity}}</td>
+				<td style="padding: 15px; ">{{i.Value}}</td>
+				<td style="padding: 15px; ">{{i.Status}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		{% else %}
+		<p>No Previous Records Found!</p>
+		{% endif %}
+	</div>
+</body>
+</html>

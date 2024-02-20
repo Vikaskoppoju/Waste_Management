@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>E-Plastic Management System</title>
+	<style type="text/css">
+	body{
+			background-image: url('{% static "images/bg.jpeg" %}');
+			background-repeat: no-repeat;
+  			background-attachment: fixed;
+  			background-size: 100% 100%;
+		}		input{
+			padding: 10px;
+		}
+		table{
+			text-align: left;
+		}
+		form{
+			background-color: transparent;
+			width: 13%;
+			padding: 50px;
+		}
+		button{
+			background-color: skyblue;
+			padding: 10px;
+			font-size: 15px;
+			font-family: serif;
+			color: red;
+			border: 0px;
+		}
+	</style>
+</head>
+<body>
+	<center><a href="{% url 'home' %}"><img src="{% static 'images/title_head.jpg' %}"></a></center>
+	<center><img src="{% static 'images/hack.jpeg' %}"></center>
+    <marquee><h2>Please Be With Us!!! To Reuse Reduce Recycle Plastic</h2></marquee>
+    <center>
+    <h1>Register Here...</h1>
+    <form method="POST">
+    	{% csrf_token %}
+    	<table>
+    		<tr>
+    			<td><label><h3>*Name:</h3></label></td>
+    			<td><input type="text" placeholder="Enter Your name" name="username" required></td>
+    		</tr>
+    		<tr>
+    			<td><label><h3>*Mobile Number:</h3></label></td>
+    			<td><input type="number" placeholder="Enter Mobile Number" name="phno" required></td>
+    		</tr>
+    		<tr>
+    			<td><label><h3>*Email ID:</h3></label></td>
+    			<td><input type="text" placeholder="Enter your Email ID" name="email" required> </td>
+    		</tr>
+    		<tr>
+    			<td><label><h3>*Address:</h3></label></td>
+    			<td><input type="text" placeholder="Enter Address" name="addr" required></td>
+    		</tr>
+    		<tr>
+    			<td><label><h3>*Password:</h3></label></td>
+    			<td><input type="password" placeholder="Enter Password" name="psswd" required></td>
+    		</tr>
+    		<tr>
+    			<td><label><h3>*Confirm Password:</h3></label></td>
+    			<td><input type="password" placeholder="Confirm Password" name="cpsswd" required></td>
+    		</tr>
+    	</table>
+    	<br>
+    	<button type="submit">Register</button>
+    </form>
+    </center>
+    
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>E-Plastic Management System</title>
+	<style type="text/css">
+		body{
+			background-image: url('{% static "images/bg.jpeg" %}');
+			background-repeat: no-repeat;
+  			background-attachment: fixed;
+  			background-size: 100% 100%;
+		}
+		table,th,td{
+			border: 1px solid black;
+			border-collapse: collapse;
+			padding: 15px;
+		}
+		#btn{
+			background-color: white;
+			color: blue;
+			border: 0px;
+		}
+	</style>
+</head>
+<body>
+	<center><a href="{% url 'home' %}"><img src="{% static 'images/title_head.jpg' %}"></a></center>
+	<center><img src="{% static 'images/hack.jpeg' %}"></center>
+	<h3>Hi, {{name}}</h3>
+	<center>
+	<table>
+		<tr>
+			<td>S.No.</td>
+			<td>Name</td>
+			<td>Material</td>
+			<td>Address</td>
+			<td>Infrom</td>
+		</tr>
+		{% for i in data %}
+		<tr>
+			<td>{{i.id}}</td>
+			<td>{{i.Name}}</td>
+			<td>{{i.Material}}</td>
+			<td>{{i.Address}}</td>
+			<td>
+				<form method="POST">
+					{% csrf_token %}
+					<input type="text" name="email" value={{i.EMail}}>
+					<input type="submit" name="submit" value="Accept" id="btn">
+				</form>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+	</center>
+</body>
+</html>

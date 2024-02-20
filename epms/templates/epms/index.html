@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>E-Plastic Management System</title>
+	<style type="text/css">
+		body{
+			background-image: url('{% static "images/bg.jpeg" %}');
+			background-repeat: no-repeat;
+  			background-attachment: fixed;
+  			background-size: 100% 100%;
+		}
+		h1{
+			padding: 15px;
+			color: darkgreen;
+			width: 30%;
+		}
+		button{
+			border: 0px;
+			padding: 25px;
+			padding-left: 100px;
+			font-size: 25px;
+			font-family: serif;
+			color: blue;
+			background-color: transparent;
+			text-align: center;
+		}
+		p{
+			text-align: justify;
+			font-size: 25px;
+			padding: 5px;
+			color: black;
+
+		}
+		#content{
+			width: 75%;
+			padding: 15px;
+		}
+	</style>
+</head>
+<body>
+	<center><a href="{% url 'home' %}"><img src="{% static 'images/title_head.jpg' %}"></a></center>
+	<center><img src="{% static 'images/hack.jpeg' %}"></center>
+	<center><h1 align="center"><u>E - Plastic Management System</u><br></h1></center>
+	<center>
+	<div id="content">
+		<p>Hello Plastic user, please listen to us once! Plastic is a part of our life. Saying no to plastic is a difficult at this time. But think once, when we able to recycle it in a correct way then our next generations can survive like us. By recycling all plastic in a correct and organised way then we can reduce the level of Global Warming. Here, we are going in the way of reducing wastage of plastic. If you are also want to be part of us Register below and replace your garbage with price or goods.</p>
+	</div>
+	</center>
+	<center>
+	<a href="{% url 'login' %}"><button><strong>Login</strong></button></a>
+	<a href="{% url 'register' %}"><button><strong>Register</strong></button></a>
+	</center>
+</body>
+</html>

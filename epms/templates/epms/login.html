@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>E-Plastic Management System</title>
+	<style type="text/css">
+		body{
+			background-image: url('{% static "images/bg.jpeg" %}');
+			background-repeat: no-repeat;
+  			background-attachment: fixed;
+  			background-size: 100% 100%;
+		}
+		input{
+			padding: 10px;
+		}
+		table{
+			text-align: left;
+		}
+		form{
+			background-color:transparent;
+			width: 13%;
+			padding: 50px;
+		}
+		button{
+			background-color: skyblue;
+			padding: 10px;
+			font-size: 15px;
+			font-family: serif;
+			color:  #b30000;
+			border: 0px;
+		}
+	</style>
+</head>
+<body bgcolor="#3377ff">
+	<center><a href="{% url 'home' %}"><img src="{% static 'images/title_head.jpg' %}"></a></center>
+	<center><img src="{% static 'images/hack.jpeg' %}"></center>
+    <marquee><h2>Waste isn’t waste until we waste it.</h2></marquee>
+    <center>
+    	<h1>Login</h1>
+    <form method="POST">
+    	{% csrf_token %}
+    	<table>
+    		<tr>
+    			<td><label><h3>*Username:</h3></label> </td>
+    			<td><input type="text" placeholder="Enter Username" name="username" required> </td>
+    		</tr>
+    		<tr>
+    			<td> <label><h3>*Password:</h3></label>  </td>
+    			<td><input type="password" placeholder="Enter Password" name="password" required>  </td>
+    		</tr>
+    	</table>
+    	<br>
+    	<button type="submit">Login</button>
+    </form>
+    </center>
+</body>
+</html>
